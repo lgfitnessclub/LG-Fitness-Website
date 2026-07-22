@@ -267,17 +267,8 @@ body{
     align-items:center;
     text-align:center;
     overflow:hidden;
-
     padding:120px 20px 80px;
-
-    background:
-    linear-gradient(rgba(0,0,0,.68),rgba(0,0,0,.82)),
-    url("../assets/images/hero-bg.jpg");
-
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-    animation:heroZoom 18s ease-in-out infinite alternate;
+    background:#000;
 }
 
 .hero-content{
@@ -371,22 +362,6 @@ body{
 
 }
 
-@keyframes heroZoom{
-
-    from{
-
-        background-size:100%;
-
-    }
-
-    to{
-
-        background-size:105%;
-
-    }
-
-}
-
 .hero{
     position:relative;
     overflow:hidden;
@@ -401,22 +376,34 @@ body{
     height:100%;
     object-fit:cover;
     z-index:0;
+    pointer-events:none;
 }
 
 .hero-overlay{
     position:absolute;
     inset:0;
     background:
-        linear-gradient(
-            rgba(0,0,0,.55),
-            rgba(0,0,0,.55)
-        );
+linear-gradient(
+rgba(0,0,0,.45),
+rgba(0,0,0,.70)
+);
     z-index:1;
 }
 
 .hero-content{
     position:relative;
     z-index:2;
+}
+
+.hero-video{
+
+    opacity:.85;
+
+    filter:
+        brightness(.95)
+        contrast(1.05)
+        saturate(1.1);
+
 }
 
 @media(max-width:768px){
