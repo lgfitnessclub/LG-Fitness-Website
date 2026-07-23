@@ -218,49 +218,96 @@ document.addEventListener("keydown",(e)=>{
 });
 
 /*=========================================
-        GALLERY FILTER
+        PREMIUM GALLERY FILTER
 =========================================*/
 
 const filterButtons = document.querySelectorAll(".filter-btn");
 const galleryCards = document.querySelectorAll(".gallery-item");
+const galleryToggle = document.getElementById("galleryToggle");
 
-filterButtons.forEach(button => {
+let currentFilter = "all";
+let galleryExpanded = false;
 
-    button.addEventListener("click", () => {
+function renderGallery(){
 
-        // Active button
-        filterButtons.forEach(btn => btn.classList.remove("active"));
-        button.classList.add("active");
+    let visibleIndex = 0;
 
-        const filterValue = button.dataset.filter;
+    galleryCards.forEach(card=>{
 
-        galleryCards.forEach(card => {
+        const matched = currentFilter==="all" || card.classList.contains(currentFilter);
 
-            if (filterValue === "all" || card.classList.contains(filterValue)) {
+        if(!matched){
 
-                card.style.display = "block";
+            card.style.display="none";
+            return;
 
-                setTimeout(() => {
-                    card.style.opacity = "1";
-                    card.style.transform = "scale(1)";
-                }, 20);
+        }
 
-            } else {
+        if(window.innerWidth<=768){
 
-                card.style.opacity = "0";
-                card.style.transform = "scale(.9)";
+            if(!galleryExpanded && visibleIndex>=4){
 
-                setTimeout(() => {
-                    card.style.display = "none";
-                }, 250);
+                card.style.display="none";
+
+            }else{
+
+                card.style.display="block";
 
             }
 
-        });
+        }else{
+
+            card.style.display="block";
+
+        }
+
+        visibleIndex++;
+
+    });
+
+    if(window.innerWidth<=768){
+
+        galleryToggle.style.display=visibleIndex>4?"flex":"none";
+
+        galleryToggle.innerHTML = galleryExpanded
+
+        ? 'Show Less <i class="fa-solid fa-chevron-up"></i>'
+
+        : 'View More <i class="fa-solid fa-chevron-down"></i>';
+
+    }
+
+}
+
+filterButtons.forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        filterButtons.forEach(btn=>btn.classList.remove("active"));
+
+        button.classList.add("active");
+
+        currentFilter=button.dataset.filter;
+
+        galleryExpanded=false;
+
+        renderGallery();
 
     });
 
 });
+
+galleryToggle.addEventListener("click",()=>{
+
+    galleryExpanded=!galleryExpanded;
+
+    renderGallery();
+
+});
+
+window.addEventListener("resize",renderGallery);
+
+window.addEventListener("load",renderGallery);
 
 /*=========================================
         SCROLL PROGRESS BAR
