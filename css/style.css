@@ -5113,3 +5113,25 @@ body.menu-open{
     }
 
 }
+
+.gallery-more{
+    display:none;
+}
+
+#galleryToggle{
+    display:none;
+}
+
+@media (max-width:768px){
+
+    .gallery-more{
+        display:flex;
+        justify-content:center;
+        margin-top:28px;
+    }
+
+    #galleryToggle{
+        display:flex;
+    }
+
+}

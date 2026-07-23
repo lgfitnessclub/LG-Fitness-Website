@@ -218,62 +218,73 @@ document.addEventListener("keydown",(e)=>{
 });
 
 /*=========================================
-        PREMIUM GALLERY FILTER
+        GALLERY ENGINE V2.0
 =========================================*/
 
 const filterButtons = document.querySelectorAll(".filter-btn");
-const galleryCards = document.querySelectorAll(".gallery-item");
+const galleryItems = document.querySelectorAll(".gallery-item");
 const galleryToggle = document.getElementById("galleryToggle");
 
-let currentFilter = "all";
-let galleryExpanded = false;
+let activeFilter = "all";
 
-function renderGallery(){
+function filterGallery(filter){
 
-    let visibleIndex = 0;
+    let visibleCount = 0;
 
-    galleryCards.forEach(card=>{
+    galleryItems.forEach(item=>{
 
-        const matched = currentFilter==="all" || card.classList.contains(currentFilter);
+        const matched =
+            filter==="all" ||
+            item.classList.contains(filter);
 
         if(!matched){
 
-            card.style.display="none";
+            item.style.display="none";
             return;
 
         }
 
+        visibleCount++;
+
         if(window.innerWidth<=768){
 
-            if(!galleryExpanded && visibleIndex>=4){
+            if(!galleryExpanded && visibleCount>4){
 
-                card.style.display="none";
+                item.style.display="none";
 
             }else{
 
-                card.style.display="block";
+                item.style.display="block";
 
             }
 
         }else{
 
-            card.style.display="block";
+            item.style.display="block";
 
         }
-
-        visibleIndex++;
 
     });
 
     if(window.innerWidth<=768){
 
-        galleryToggle.style.display=visibleIndex>4?"flex":"none";
+        if(visibleCount>4){
 
-        galleryToggle.innerHTML = galleryExpanded
+            galleryToggle.style.display="flex";
 
-        ? 'Show Less <i class="fa-solid fa-chevron-up"></i>'
+            galleryToggle.innerHTML = galleryExpanded
+                ? 'Show Less <i class="fa-solid fa-chevron-up"></i>'
+                : 'View More <i class="fa-solid fa-chevron-down"></i>';
 
-        : 'View More <i class="fa-solid fa-chevron-down"></i>';
+        }else{
+
+            galleryToggle.style.display="none";
+
+        }
+
+    }else{
+
+        galleryToggle.style.display="none";
 
     }
 
@@ -283,15 +294,17 @@ filterButtons.forEach(button=>{
 
     button.addEventListener("click",()=>{
 
-        filterButtons.forEach(btn=>btn.classList.remove("active"));
+        filterButtons.forEach(btn=>
+
+            btn.classList.remove("active")
+
+        );
 
         button.classList.add("active");
 
-        currentFilter=button.dataset.filter;
+        activeFilter = button.dataset.filter;
 
-        galleryExpanded=false;
-
-        renderGallery();
+        filterGallery(activeFilter);
 
     });
 
@@ -301,13 +314,11 @@ galleryToggle.addEventListener("click",()=>{
 
     galleryExpanded=!galleryExpanded;
 
-    renderGallery();
+    filterGallery(activeFilter);
 
 });
 
-window.addEventListener("resize",renderGallery);
-
-window.addEventListener("load",renderGallery);
+filterGallery("all");
 
 /*=========================================
         SCROLL PROGRESS BAR
