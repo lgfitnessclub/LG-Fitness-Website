@@ -770,7 +770,7 @@ featureToggles.forEach(toggle => {
 
         } else {
 
-            text.textContent = "View 8 Premium Features";
+            text.textContent = "View Premium Features";
 
         }
 
