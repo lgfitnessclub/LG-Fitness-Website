@@ -4771,3 +4771,83 @@ body.menu-open{
     user-select:all;
 
 }
+
+/*=========================================
+      MOBILE MEMBERSHIP ACCORDION
+=========================================*/
+
+.feature-toggle{
+    display:none;
+}
+
+@media (max-width:768px){
+
+    .feature-toggle{
+
+        width:100%;
+        margin:18px 0;
+        padding:14px 18px;
+
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+
+        background:rgba(255,255,255,.05);
+
+        border:1px solid rgba(255,255,255,.08);
+
+        border-radius:12px;
+
+        color:#fff;
+
+        font-size:14px;
+        font-weight:600;
+
+        cursor:pointer;
+
+        transition:.35s;
+    }
+
+    .feature-toggle:hover{
+
+        background:rgba(255,107,0,.12);
+
+    }
+
+    .feature-toggle i{
+
+        transition:.35s;
+
+    }
+
+    .feature-list{
+
+        max-height:0;
+
+        overflow:hidden;
+
+        opacity:0;
+
+        transition:
+        max-height .45s ease,
+        opacity .35s ease;
+
+    }
+
+    .feature-list.active{
+
+        max-height:600px;
+
+        opacity:1;
+
+        margin-top:15px;
+
+    }
+
+    .feature-toggle.active i{
+
+        transform:rotate(180deg);
+
+    }
+
+}

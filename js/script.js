@@ -746,3 +746,34 @@ closeSuccess.addEventListener("click", function () {
     registerModal.style.display = "flex";
 
 });
+
+/*=========================================
+      MOBILE MEMBERSHIP ACCORDION
+=========================================*/
+
+const featureToggles = document.querySelectorAll(".feature-toggle");
+
+featureToggles.forEach(toggle => {
+
+    toggle.addEventListener("click", function () {
+
+        const featureList = this.nextElementSibling;
+
+        this.classList.toggle("active");
+        featureList.classList.toggle("active");
+
+        const text = this.querySelector("span");
+
+        if (featureList.classList.contains("active")) {
+
+            text.textContent = "Hide Features";
+
+        } else {
+
+            text.textContent = "View 8 Premium Features";
+
+        }
+
+    });
+
+});
