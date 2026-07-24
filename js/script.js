@@ -226,6 +226,7 @@ const galleryItems = document.querySelectorAll(".gallery-item");
 const galleryToggle = document.getElementById("galleryToggle");
 
 let activeFilter = "all";
+let galleryExpanded = false;
 
 function filterGallery(filter){
 
