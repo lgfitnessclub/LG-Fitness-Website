@@ -1956,19 +1956,23 @@ font-size:34px;
 
 .membership-toggle{
 
-flex-direction:column;
+    display:flex;
 
-border-radius:18px;
+    flex-direction:row;
 
-width:100%;
+    border-radius:18px;
 
-max-width:340px;
+    width:100%;
+
+    max-width:340px;
 
 }
 
 .toggle-btn{
 
-width:100%;
+    flex:1;
+
+    width:50%;
 
 }
 
@@ -5423,6 +5427,9 @@ body.menu-open{
         padding:6px;
 
         display:flex;
+
+        flex-direction:row;
+
         align-items:stretch;
 
         border-radius:20px;
