@@ -5052,6 +5052,8 @@ body.menu-open{
 
     display:none;
 
+    width:100%;
+
 }
 
 @media (max-width:768px){
@@ -5062,9 +5064,11 @@ body.menu-open{
 
         justify-content:center;
 
-        margin-top:28px;
+        margin-top:25px;
 
     }
+
+}
 
     #galleryToggle{
 

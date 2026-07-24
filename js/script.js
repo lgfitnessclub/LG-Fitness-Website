@@ -486,13 +486,12 @@ scrollBtn.addEventListener("click",()=>{
         PREMIUM PRELOADER
 =========================================*/
 
-window.addEventListener("load", () => {
+document.addEventListener("DOMContentLoaded", () => {
 
     const preloader = document.getElementById("preloader");
 
     if (!preloader) return;
 
-    // Prevent page scrolling while loader is visible
     document.body.style.overflow = "hidden";
 
     setTimeout(() => {
