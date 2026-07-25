@@ -12,8 +12,9 @@ html{
 
 body{
     font-family:'Poppins',sans-serif;
-    body{
     background:#050505;
+    color:#fff;
+    overflow-x:hidden;
 }
 
 /*=========================================
@@ -103,23 +104,15 @@ body{
 /* ---------- LOGO ---------- */
 
 .logo img{
-    height:115px;
-    width:auto;
+    width:180px;
+    height:auto;
     display:block;
-    transition:0.35s ease;
-    filter:drop-shadow(0 0 12px rgba(42,170,255,0.45));
+    transition:.35s ease;
+    filter:drop-shadow(0 0 12px rgba(42,170,255,.45));
 }
 
 .logo img:hover{
     transform:scale(1.08);
-}
-
-.logo img{
-
-    width:200px;
-
-    transition:.35s ease;
-
 }
 
 .header.scrolled .logo img{
@@ -5470,5 +5463,27 @@ body.menu-open{
 
         word-break:break-word;
     }
+
+}
+
+hero-image{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:none;
+    z-index:0;
+}
+
+@media(max-width:768px){
+
+.hero-video{
+    display:none;
+}
+
+.hero-image{
+    display:block;
+}
 
 }
