@@ -264,7 +264,7 @@ body{
 
 .hero-content{
     position: relative;
-    z-index: 2;
+    z-index: 3;
     max-width: 900px;
     transform: translateY(-40px);
     animation:heroFade 1s ease-out;
@@ -844,39 +844,34 @@ rgba(0,0,0,.70)
 ========================================*/
 
 .facility-card{
-
     position:relative;
-
     overflow:hidden;
-
     display:flex;
-
     flex-direction:column;
-
     align-items:center;
-
     text-align:center;
-
     min-height:310px;
-
     padding:38px 28px;
 
     border-radius:22px;
 
-    background:rgba(20,20,20,.78);
-    backdrop-filter:blur(12px);
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.05),
+            rgba(255,255,255,.02)
+        );
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
     border:1px solid rgba(255,255,255,.08);
 
     transition:
-
         transform .45s ease,
-
         box-shadow .45s ease,
-
         border-color .45s ease,
-
         background .45s ease;
-
 }
 
 .facility-card:hover{
@@ -937,21 +932,6 @@ rgba(0,0,0,.70)
 
 
 /* Premium Glass Background */
-
-.facility-card{
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,.05),
-            rgba(255,255,255,.02)
-        );
-
-    backdrop-filter:blur(18px);
-
-    -webkit-backdrop-filter:blur(18px);
-
-}
 
 
 /* Orange Accent Line */
@@ -5468,11 +5448,6 @@ body.menu-open{
 
 .hero-overlay{
     z-index:2;
-}
-
-.hero-content{
-    position:relative;
-    z-index:3;
 }
 
 @media(max-width:768px){
